@@ -2,13 +2,13 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
 
-const server = new McpServer({
-  name: "mcp-http-server",
-  version: "1.0.0",
-});
+const server = new McpServer(
+  { name: "mcp-http-server", version: "1.0.0" },
+  { capabilities: {} }
+);
 
 const headersSchema = z
-  .record(z.string())
+  .record(z.string(), z.string())
   .optional()
   .describe("Optional HTTP headers as key-value pairs");
 
